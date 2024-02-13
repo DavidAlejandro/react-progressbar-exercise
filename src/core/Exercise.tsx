@@ -1,4 +1,12 @@
-const Exercise = ({ solution, specsUrl, title }) => {
+import { ReactNode } from "react";
+
+type Props = {
+  solution: ReactNode;
+  specsUrl: string;
+  title: string;
+};
+
+export const Exercise = ({ solution, specsUrl, title }: Props) => {
   return (
     <div className="exercise">
       <h2>{title}</h2>
@@ -16,5 +24,3 @@ const Exercise = ({ solution, specsUrl, title }) => {
     </div>
   );
 };
-
-export default Exercise;

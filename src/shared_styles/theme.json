@@ -1,0 +1,10 @@
+{
+  "colors": {
+    "gray": "rgba(0, 0, 0, 0.6)",
+    "green": "rgb(24,185,157)",
+    "light-orange": "rgb(238,183,151)",
+    "orange": "rgb(234,140,85)",
+    "dark-orange": "rgb(216,95,85)",
+    "red": "rgb(216,46,36)"
+  }
+}
