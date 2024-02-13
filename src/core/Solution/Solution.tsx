@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Button } from './components/Button/Button';
 import { Row } from './components/Layout/Row/Row';
@@ -14,7 +14,7 @@ export const Solution = () => {
   const increaseProgressIntervalRef = useRef<null | NodeJS.Timeout>(null);
   const stopRequestTimeoutRef = useRef<null | NodeJS.Timeout>(null);
 
-  const startRequest = () => {
+  const startRequest = useCallback(() => {
     setRequestProgress(0);
     if (!increaseProgressIntervalRef.current) {
       const intervalId = setInterval(() => {
@@ -28,10 +28,10 @@ export const Solution = () => {
 
       increaseProgressIntervalRef.current = intervalId;
     }
-  };
+  }, []);
 
   const [isStopingRequest, setIsStopingRequest] = useState(false);
-  const stopRequest = () => {
+  const stopRequest = useCallback(() => {
     setIsStopingRequest(true);/* This is needed so that the "FINISH REQUEST" button gets disabled right away
     instead of waiting for the timeout to finish which results in a bad user experience*/
 
@@ -50,7 +50,7 @@ export const Solution = () => {
       }, 1000);
       stopRequestTimeoutRef.current = timeoutId;
     }
-  };
+  }, []);
 
   useEffect(() => {
     return () => {

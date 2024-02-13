@@ -25,6 +25,23 @@ describe('ProgressBarExercise', () => {
     });
   });
 
+  test("The progress bar hangs at 90% after 15 seconds if the user did not stop the request", async () => {
+    const user = userEvent.setup({ delay: null }); //This is needed for useFakeTimers to work properly
+    render(<ProgressBarExercise />);
+    const startRequestButton = screen.getByText('START REQUEST');
+    expect(startRequestButton).toBeVisible();
+    await user.click(startRequestButton);
+    jest.advanceTimersByTime(15000);
+
+    await waitFor(() => {
+      expect(screen.getByText('LOADING...')).toBeVisible()
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText('90%')).toBeVisible()
+    });
+  });
+
   test("The request finishes and the progress bar shows 100% after a second has passed after the user clicks on the 'FINISH REQUEST' button", async () => {
     const user = userEvent.setup({ delay: null }); //This is needed for useFakeTimers to work properly
     render(<ProgressBarExercise />);

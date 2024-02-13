@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, memo } from 'react';
 
 import { ThemeColors } from '../../../../shared_styles/utils';
 import { ButtonRoot } from './ButtonStyle';
@@ -9,10 +9,10 @@ interface Props extends PropsWithChildren {
   onClick: () => void;
 };
 
-export const Button = ({ color, children, disabled, onClick }: Props) => {
+export const Button = memo(({ color, children, disabled, onClick }: Props) => {
   return (
     <ButtonRoot disabled={disabled} color={color} onClick={onClick}>
       {children}
     </ButtonRoot>
   );
-};
+});
