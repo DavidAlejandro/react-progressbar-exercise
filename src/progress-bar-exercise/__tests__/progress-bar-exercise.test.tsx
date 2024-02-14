@@ -42,7 +42,7 @@ describe('ProgressBarExercise', () => {
     });
   });
 
-  test("The request finishes and the progress bar shows 100% after a second has passed after the user clicks on the 'FINISH REQUEST' button", async () => {
+  test("When the user clicks on the 'FINISH REQUEST' button the request finishes, the progress bar shows 100% after a second has passed and then it hides", async () => {
     const user = userEvent.setup({ delay: null }); //This is needed for useFakeTimers to work properly
     render(<ProgressBarExercise />);
 
@@ -60,6 +60,28 @@ describe('ProgressBarExercise', () => {
 
     await waitFor(() => {
       expect(screen.getByText('100%')).toBeInTheDocument()
+    });
+    expect(screen.getByText('100%')).not.toBeVisible();
+  });
+
+  test("Progress slows down when it is around a breakpoint and the request takes longer when breakpoints are enabled", async () => {
+    const user = userEvent.setup({ delay: null }); //This is needed for useFakeTimers to work properly
+    render(<ProgressBarExercise />);
+
+    const enabledBreakpointsCheckbox = screen.getByRole('checkbox', { name: 'enabled breakpoints' });
+    expect(enabledBreakpointsCheckbox).toBeVisible();
+    user.click(enabledBreakpointsCheckbox);
+    await waitFor(() => {
+      expect(screen.getByText('Breakpoints at: 10, 25, 30, 65, 85')).toBeVisible();
+    });
+
+    const startRequestButton = screen.getByText('START REQUEST');
+    expect(startRequestButton).toBeVisible();
+    await user.click(startRequestButton);
+    jest.advanceTimersByTime(15000);
+
+    await waitFor(() => {
+      expect(screen.getByText('57%')).toBeInTheDocument()
     });
   });
 
