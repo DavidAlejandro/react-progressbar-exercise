@@ -9,7 +9,7 @@ export const ButtonRoot = styled.button<{ color: ThemeColors }>`
   box-shadow: inset 0 0 0 1px ${({ color }) => applyColor(color)};
   border-radius: 25px;
   color: ${({ color }) => applyColor(color)};
-  // font-weight: bold;
+  font-weight: 600;
   letter-spacing: 1.2px;
 
   &:hover {
@@ -21,7 +21,7 @@ export const ButtonRoot = styled.button<{ color: ThemeColors }>`
   }
 
   &:disabled {
-    opacity: 0.6;
+    opacity: 0.4;
     box-shadow: inset 0 0 0 1px ${({ color }) => applyColor(color)};
     cursor: initial;
   }

@@ -1,6 +1,7 @@
 import { Progress, ProgressContainer, ProgressBarRow, ProgressLabel } from './ProgressBarStyle';
 
 type Props = {
+  breakPoints?: number[];
   progress: number;
   fadeOut?: boolean;
   show: boolean;
