@@ -6,30 +6,38 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint --fix ./src",
-    "prettify": "prettier --write ./src"
+    "prettify": "prettier --write ./src",
+    "test": "react-scripts test"
   },
   "dependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.17",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.21.3",
     "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",
     "sass": "^1.70.0",
+    "styled-components": "^6.1.8",
+    "typescript": "^5.3.3",
     "web-vitals": "^3.5.2"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@testing-library/jest-dom": "^6.3.0",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.2",
     "eslint-config-prettier": "9.1.0",
     "prettier": "3.2.4"
   },
-  "eslintConfig": { 
-    "extends": [ 
-      "react-app", 
-      "react-app/jest", 
-      "prettier" 
-    ] 
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "prettier"
+    ]
   },
   "browserslist": {
     "production": [
